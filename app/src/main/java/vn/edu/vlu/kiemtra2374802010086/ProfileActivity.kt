@@ -2,7 +2,10 @@ package vn.edu.vlu.kiemtra2374802010086
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -31,5 +34,19 @@ class ProfileActivity : AppCompatActivity() {
         val account = intent.getBundleExtra(EXTRA_ACCOUNT)
         emailView.text = account?.getString(KEY_EMAIL).orEmpty()
         logoutButton.setOnClickListener { finish() }
+
+        val courses = arrayOf(
+            "Lập trình Kotlin",
+            "Thiết kế Layout XML",
+            "Quản lý Git/GitHub",
+            "Xử lý Intent",
+            "Kiến trúc Android"
+        )
+        val courseList = findViewById<ListView>(R.id.lvCourses)
+        courseList.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, courses)
+        courseList.setOnItemClickListener { parent, _, position, _ ->
+            val selectedCourse = parent.getItemAtPosition(position).toString()
+            Toast.makeText(this, selectedCourse, Toast.LENGTH_LONG).show()
+        }
     }
 }

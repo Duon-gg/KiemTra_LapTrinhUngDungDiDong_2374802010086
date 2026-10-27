@@ -9,7 +9,7 @@ object Evidence {
     fun capture(name: String) {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         instrumentation.waitForIdleSync()
-        SystemClock.sleep(350)
+        SystemClock.sleep(800)
         val directory = File(instrumentation.targetContext.getExternalFilesDir(null), "screenshots")
         check(directory.exists() || directory.mkdirs())
         val bitmap = checkNotNull(instrumentation.uiAutomation.takeScreenshot())

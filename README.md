@@ -3,7 +3,7 @@
 - Họ tên: Nguyễn Văn Tùng Dương
 - MSSV: 2374802010086
 - Project: `KiemTra_LapTrinhUngDungDiDong_2374802010086`
-- Nhánh hiện tại: `cau-2`
+- Nhánh hiện tại: `cau-3`
 
 ## Câu 1: Đăng nhập và kiểm tra dữ liệu
 
@@ -28,7 +28,9 @@ Lệnh thứ hai cần emulator hoặc thiết bị Android đã bật USB debug
 
 Hai kiểm thử dữ liệu hợp lệ ở Câu 1 được chuyển sang ProfileNavigationTest để kiểm tra điều hướng, Email nhận được và đăng xuất. Có thêm kiểm thử giữ Email sau khi Activity được tạo lại.
 
-Đã kiểm tra trên emulator API 35: 8/8 kiểm thử đạt; assembleDebug và lintDebug thành công. Lint còn cảnh báo đề xuất cập nhật thư viện, cấu hình sao lưu và app indexing; không có lỗi.
+CourseListTest kiểm tra 5 môn học đúng thứ tự và Toast trùng tên phần tử đầu/cuối được bấm. Kiểm thử Toast đọc sự kiện accessibility của thông báo Android.
+
+Đã kiểm tra trên emulator API 35: **11/11 kiểm thử đạt**. Build APK và lintDebug thành công; Lint báo 0 lỗi, 10 cảnh báo về phiên bản thư viện, cấu hình sao lưu và vẽ nền trùng.
 
 ## Minh chứng Câu 1
 
@@ -54,7 +56,27 @@ Nút **Đăng xuất** gọi `finish()`, đóng ProfileActivity và trở về L
 
 Hai ảnh Câu 1 giữ lại minh chứng của nhánh `cau-1`; từ Câu 2, đăng nhập hợp lệ sẽ mở ProfileActivity.
 
-## Cấu trúc nhánh
+## Câu 3: ListView và ArrayAdapter
+
+ProfileActivity dùng `findViewById` để lấy ListView bên dưới nút Đăng xuất. Mảng dữ liệu chứa 5 môn học:
+
+- Lập trình Kotlin
+- Thiết kế Layout XML
+- Quản lý Git/GitHub
+- Xử lý Intent
+- Kiến trúc Android
+
+`ArrayAdapter` dùng layout `android.R.layout.simple_list_item_1`. Trong `setOnItemClickListener`, ứng dụng lấy phần tử tại vị trí vừa bấm rồi hiển thị tên đó bằng Toast.
+
+### Danh sách môn học
+
+![Câu 3: ListView hiển thị đủ 5 môn học](screenshots/cau3_listview_display.png)
+
+### Bấm chọn môn học
+
+![Câu 3: Toast hiển thị tên môn được chọn](screenshots/cau3_item_click_toast.png)
+
+## Cấu trúc Git
 
 Repository có đúng ba nhánh:
 

@@ -2,6 +2,7 @@ package vn.edu.vlu.kiemtra2374802010086
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.SystemClock
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -15,7 +16,7 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class ProfileNavigationTest {
-    private fun loginAndLogout(email: String, screenshot: String? = null) {
+    private fun loginAndLogout(email: String) {
         val instrumentation = InstrumentationRegistry.getInstrumentation()
         val monitor = instrumentation.addMonitor(ProfileActivity::class.java.name, null, false)
         try {
@@ -32,10 +33,13 @@ class ProfileNavigationTest {
                     instrumentation.runOnMainSync {
                         assertEquals(email.trim(), profile.findViewById<TextView>(R.id.tvEmail).text.toString())
                     }
-                    if (screenshot != null) Evidence.capture(screenshot)
                     instrumentation.runOnMainSync { profile.findViewById<Button>(R.id.btnLogout).performClick() }
                     instrumentation.waitForIdleSync()
                     assertTrue("Đăng xuất phải đóng ProfileActivity", profile.isFinishing)
+                    val deadline = SystemClock.uptimeMillis() + 5000
+                    while (scenario.state != Lifecycle.State.RESUMED && SystemClock.uptimeMillis() < deadline) {
+                        SystemClock.sleep(50)
+                    }
                     assertEquals(Lifecycle.State.RESUMED, scenario.state)
                     scenario.onActivity { activity ->
                         assertEquals(email, activity.findViewById<EditText>(R.id.etEmail).text.toString())
@@ -50,7 +54,7 @@ class ProfileNavigationTest {
     }
 
     @Test fun sixCharacterPasswordNavigatesAndLogoutReturns() =
-        loginAndLogout("student@example.com", "cau2_profile_intent.png")
+        loginAndLogout("student@example.com")
 
     @Test fun surroundingEmailWhitespaceIsTrimmedWhenPassed() =
         loginAndLogout("  another@example.org  ")
