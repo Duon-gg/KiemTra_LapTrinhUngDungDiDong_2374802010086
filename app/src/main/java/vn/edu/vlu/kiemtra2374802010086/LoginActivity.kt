@@ -1,5 +1,6 @@
 package vn.edu.vlu.kiemtra2374802010086
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
@@ -41,6 +42,12 @@ class LoginActivity : AppCompatActivity() {
             }
             status.setText(error ?: R.string.validation_success)
             status.setTextColor(getColor(if (error == null) R.color.success else R.color.error))
+            if (error == null) {
+                val account = Bundle().apply { putString(ProfileActivity.KEY_EMAIL, email) }
+                val intent = Intent(this, ProfileActivity::class.java)
+                intent.putExtra(ProfileActivity.EXTRA_ACCOUNT, account)
+                startActivity(intent)
+            }
         }
     }
 }

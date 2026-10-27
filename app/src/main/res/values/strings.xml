@@ -11,4 +11,6 @@
     <string name="error_email_invalid">Email không đúng định dạng.</string>
     <string name="error_password_short">Mật khẩu phải có ít nhất 6 ký tự.</string>
     <string name="validation_success">Xác thực thành công!</string>
+    <string name="profile_title">Thông tin tài khoản</string>
+    <string name="logout">Đăng xuất</string>
 </resources>

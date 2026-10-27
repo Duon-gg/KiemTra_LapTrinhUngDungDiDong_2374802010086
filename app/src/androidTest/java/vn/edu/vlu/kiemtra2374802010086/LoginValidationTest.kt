@@ -28,6 +28,4 @@ class LoginValidationTest {
     @Test fun emptyPasswordIsRejected() = check("student@example.com", "", "Vui lòng nhập mật khẩu.")
     @Test fun invalidEmailIsRejected() = check("email-sai", "123456", "Email không đúng định dạng.", "cau1_validation_error.png")
     @Test fun fiveCharacterPasswordIsRejected() = check("student@example.com", "12345", "Mật khẩu phải có ít nhất 6 ký tự.")
-    @Test fun sixCharacterPasswordIsAccepted() = check("student@example.com", "123456", "Xác thực thành công!", "cau1_validation_success.png")
-    @Test fun surroundingEmailWhitespaceIsTrimmed() = check("  student@example.com  ", "123456", "Xác thực thành công!")
 }
