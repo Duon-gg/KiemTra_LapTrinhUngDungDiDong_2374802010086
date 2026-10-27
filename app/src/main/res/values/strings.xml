@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Kiểm tra Mobile • 2374802010086</string>
+    <string name="login_title">Hệ thống tài khoản</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Mật khẩu (ít nhất 6 ký tự)</string>
+    <string name="login">Đăng nhập</string>
+    <string name="login_hint">Nhập Email và mật khẩu để tiếp tục.</string>
+    <string name="error_both_empty">Vui lòng nhập Email và mật khẩu.</string>
+    <string name="error_email_empty">Vui lòng nhập Email.</string>
+    <string name="error_password_empty">Vui lòng nhập mật khẩu.</string>
+    <string name="error_email_invalid">Email không đúng định dạng.</string>
+    <string name="error_password_short">Mật khẩu phải có ít nhất 6 ký tự.</string>
+    <string name="validation_success">Xác thực thành công!</string>
+</resources>

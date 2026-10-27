@@ -1,0 +1,8 @@
+<resources>
+    <color name="primary">#174EA6</color>
+    <color name="text">#18243A</color>
+    <color name="muted">#526078</color>
+    <color name="error">#B3261E</color>
+    <color name="success">#146C2E</color>
+    <color name="background">#F8FAFC</color>
+</resources>
